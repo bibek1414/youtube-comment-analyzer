@@ -1,0 +1,73 @@
+<!-- options.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Comment Analyzer - Options</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>YouTube Comment Analyzer - Options</h1>
+    </header>
+    
+    <div class="options-panel">
+      <div class="option-group">
+        <h2>API Settings</h2>
+        <div class="option-row">
+          <label for="api-url">API URL:</label>
+          <input type="text" id="api-url" placeholder="Enter API URL">
+        </div>
+      </div>
+      
+      <div class="option-group">
+        <h2>Analysis Settings</h2>
+        <div class="option-row">
+          <label for="max-comments">Maximum Comments to Analyze:</label>
+          <input type="number" id="max-comments" min="10" max="500" value="100">
+        </div>
+        <div class="option-row">
+          <label for="auto-analyze">Auto-analyze when visiting YouTube:</label>
+          <input type="checkbox" id="auto-analyze">
+        </div>
+      </div>
+      
+      <div class="option-group">
+        <h2>Display Settings</h2>
+        <div class="option-row">
+          <label for="chart-type">Chart Type:</label>
+          <select id="chart-type">
+            <option value="pie">Pie Chart</option>
+            <option value="bar">Bar Chart</option>
+            <option value="doughnut">Doughnut Chart</option>
+          </select>
+        </div>
+        <div class="option-row">
+          <label for="theme">Theme:</label>
+          <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="auto">Auto (System)</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="button-row">
+        <button id="save-options" class="primary-btn">Save Options</button>
+        <button id="reset-options" class="secondary-btn">Reset to Default</button>
+      </div>
+    </div>
+    
+    <div class="status-message" id="status-message"></div>
+    
+    <footer>
+      <a href="#" id="back-to-popup">Back to Analyzer</a>
+      <span class="version">v1.0</span>
+    </footer>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

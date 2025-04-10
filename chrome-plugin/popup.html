@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>YouTube Comment Analyzer</title>
+ <link rel="stylesheet" href="styles.css">
+ <script src="/js/chart.min.js"></script>
+
+</head>
+<body>
+ <div class="container">
+ <header>
+ <h1>YouTube Comment Analyzer</h1>
+ </header>
+ <div class="status-bar">
+ <div id="status-message">Ready to analyze comments</div>
+ </div>
+ <div class="action-panel">
+ <button id="analyze-current-video" class="primary-btn">Analyze Current Video</button>
+ <div class="url-input-container">
+ <input type="text" id="video-url" placeholder="Or paste YouTube URL here">
+ <button id="analyze-url" class="secondary-btn">Analyze</button>
+ </div>
+ </div>
+ <div class="results-panel" id="results-panel">
+ <div class="summary-stats">
+ <h2>Comment Sentiment Analysis</h2>
+ <div class="video-info" id="video-info">
+ <!-- Video info will be populated here -->
+ </div>
+ <div class="stats-grid">
+ <div class="stat-box">
+ <span class="stat-label">Total Comments</span>
+ <span class="stat-value" id="total-comments">0</span>
+ </div>
+ <div class="stat-box positive">
+ <span class="stat-label">Positive</span>
+ <span class="stat-value" id="positive-count">0</span>
+ <span class="stat-percentage" id="positive-percent">0%</span>
+ </div>
+ <div class="stat-box neutral">
+ <span class="stat-label">Neutral</span>
+ <span class="stat-value" id="neutral-count">0</span>
+ <span class="stat-percentage" id="neutral-percent">0%</span>
+ </div>
+ <div class="stat-box negative">
+ <span class="stat-label">Negative</span>
+ <span class="stat-value" id="negative-count">0</span>
+ <span class="stat-percentage" id="negative-percent">0%</span>
+ </div>
+ </div>
+ </div>
+ <div class="chart-container">
+ <canvas id="sentiment-chart"></canvas>
+ </div>
+ <div class="comments-section">
+ <h3>Sample Comments</h3>
+ <div class="filter-controls">
+ <span>Filter:</span>
+ <button class="filter-btn active" data-filter="all">All</button>
+ <button class="filter-btn" data-filter="positive">Positive</button>
+ <button class="filter-btn" data-filter="neutral">Neutral</button>
+ <button class="filter-btn" data-filter="negative">Negative</button>
+ </div>
+ <div class="comments-list" id="comments-list">
+ <!-- Comments will be populated here -->
+ </div>
+ </div>
+ </div>
+ <div class="loading-overlay" id="loading-overlay">
+ <div class="spinner"></div>
+ <p>Analyzing comments...</p>
+ </div>
+ <footer>
+ <button id="options-btn" class="text-btn">Options</button>
+ <span class="version">v1.0</span>
+ </footer>
+ </div>
+ 
+ <script src="popup.js"></script>
+</body>
+</html>
