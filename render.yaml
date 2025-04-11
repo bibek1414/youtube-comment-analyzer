@@ -22,7 +22,4 @@ services:
     envVars:
       - key: PORT
         value: 5000
-    disk:
-      name: mlflow-data
-      mountPath: /mlflow/mlruns
-      sizeGB: 1
+    
