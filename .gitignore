@@ -70,7 +70,7 @@ coverage.xml
 # Production
 .vercel
 .netlify
-render.yaml
+# Do NOT ignore render.yaml
 
 # Temporary files
 *.tmp

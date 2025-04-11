@@ -1,0 +1,28 @@
+services:
+  # FastAPI backend service
+  - type: web
+    name: youtube-analyzer-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: MLFLOW_TRACKING_URI
+        value: https://youtube-analyzer-mlflow.onrender.com
+      - key: ENVIRONMENT
+        value: production
+
+  # MLflow service
+  - type: web
+    name: youtube-analyzer-mlflow
+    runtime: docker
+    dockerfilePath: ./Dockerfile.mlflow
+    plan: free
+    envVars:
+      - key: PORT
+        value: 5000
+    disk:
+      name: mlflow-data
+      mountPath: /mlflow/mlruns
+      sizeGB: 1
