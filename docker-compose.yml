@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./data:/app/data
+      - ./ml:/app/ml
+      - ./models:/app/models
+      - ./requirements.txt:/app/requirements.txt
+    environment:
+      - ENV=development
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    restart: unless-stopped
+    depends_on:
+      - mlflow
+    networks:
+      - app-network
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    environment:
+      - MLFLOW_TRACKING_URI=http://localhost:5000
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri file:///mlflow/mlruns
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

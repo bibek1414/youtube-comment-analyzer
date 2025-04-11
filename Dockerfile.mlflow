@@ -1,0 +1,12 @@
+FROM ghcr.io/mlflow/mlflow:latest
+
+WORKDIR /mlflow
+
+# Create the artifact directory
+RUN mkdir -p /mlflow/mlruns
+
+# Expose the port MLflow will run on
+EXPOSE $PORT
+
+# Command to run MLflow server
+CMD mlflow server --host 0.0.0.0 --port $PORT --backend-store-uri file:///mlflow/mlruns

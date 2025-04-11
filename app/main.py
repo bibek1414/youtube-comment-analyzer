@@ -19,6 +19,9 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="YouTube Comment Analyzer API")
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
