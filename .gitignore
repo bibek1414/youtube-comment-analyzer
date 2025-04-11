@@ -76,3 +76,5 @@ coverage.xml
 *.tmp
 *.bak
 .cache/
+vercel.json
+.github/

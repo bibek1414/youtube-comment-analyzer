@@ -19,17 +19,18 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="YouTube Comment Analyzer API")
 
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy"}
-# Add CORS middleware
+# Add CORS middleware BEFORE any endpoints
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust for production
+    allow_origins=["*"],  # For development - adjust for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "model_loaded": sentiment_model is not None}
 
 # Models
 class VideoRequest(BaseModel):

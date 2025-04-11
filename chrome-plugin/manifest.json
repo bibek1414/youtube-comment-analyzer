@@ -16,7 +16,7 @@
       "scripting",
       "storage"
     ],
-    "host_permissions": [
+    "host_permissions": [ 
       "https://*.youtube.com/*"
     ],
     "action": {
